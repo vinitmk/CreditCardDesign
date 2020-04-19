@@ -1,4 +1,19 @@
 package com.mkv.designpatterns.strategy;
 
-public class JSONFileStrategy {
+import java.util.List;
+
+import com.mkv.designpatterns.model.FileInputObject;
+import com.mkv.designpatterns.model.FileOutputObject;
+
+public class JSONFileStrategy implements FileStrategy {
+
+	@Override
+	public List<FileInputObject> readFromFile(String fileName) {
+		return null;
+	}
+
+	@Override
+	public void writeToFile(List<FileOutputObject> fileObjects) {
+
+	}
 }

@@ -1,4 +1,12 @@
 package com.mkv.designpatterns.strategy;
 
-public class FileStrategy {
+import java.util.List;
+import com.mkv.designpatterns.model.FileInputObject;
+import com.mkv.designpatterns.model.FileOutputObject;
+
+public interface FileStrategy {
+
+	public List<FileInputObject> readFromFile(String fileName);
+
+	public void writeToFile(List<FileOutputObject> fileObjects);
 }
