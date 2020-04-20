@@ -8,7 +8,7 @@ public class MasterCardHandler extends CreditCardHandler {
 		System.out.println("Inside Master Card Handler");
 		if(isCardValid(creditCardNumber)) {
 			System.out.println("Valid Mastercard Card");
-			return CreditCardTypes.MASTERCARD;
+			return CreditCardTypes.MasterCard;
 		}
 		if(null != nextHandler)
 			return nextHandler.handleRequest(creditCardNumber);

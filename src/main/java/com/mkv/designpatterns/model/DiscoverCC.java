@@ -5,7 +5,7 @@ import java.util.Date;
 public class DiscoverCC extends CreditCard {
 
     public DiscoverCC(String cardNumber, Date expirationDate, String creditCardHolderName){
-        super(CreditCardTypes.DISCOVER.name(), cardNumber, expirationDate, creditCardHolderName);
+        super(cardNumber, creditCardHolderName, expirationDate, CreditCardTypes.Discover);
         System.out.println("Discover Credit Card Object Created");
     }
 

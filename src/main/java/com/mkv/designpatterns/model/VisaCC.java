@@ -7,7 +7,7 @@ import java.util.Date;
 public class VisaCC extends CreditCard {
 
     public VisaCC(String cardNumber, Date expirationDate, String creditCardHolderName){
-        super(CreditCardTypes.VISA.name(), cardNumber, expirationDate, creditCardHolderName);
+        super(cardNumber, creditCardHolderName, expirationDate, CreditCardTypes.Visa);
         System.out.println("Visa Credit Card Object Created");
     }
 }

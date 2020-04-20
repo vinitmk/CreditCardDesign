@@ -9,7 +9,7 @@ public class VisaCardHandler extends CreditCardHandler {
 		System.out.println("Inside Visa Card Handler");
 		if(isCardValid(creditCardNumber)) {
 			System.out.println("Valid Visa Card");
-			return CreditCardTypes.VISA;
+			return CreditCardTypes.Visa;
 		}
 		if(null != nextHandler)
 			return nextHandler.handleRequest(creditCardNumber);

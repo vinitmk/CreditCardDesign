@@ -10,5 +10,5 @@ public abstract class CreditCard {
     private String cardNumber;
     private String creditCardHolderName;
     private Date expirationDate;
-    private String type;
+    private CreditCardTypes type;
 }

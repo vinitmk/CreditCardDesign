@@ -8,7 +8,7 @@ public class AmericanExpressCardHandler extends CreditCardHandler {
 		System.out.println("Inside American Express Card Handler");
 		if(isCardValid(creditCardNumber)) {
 			System.out.println("Valid American Express Card");
-			return CreditCardTypes.AMERICANEXPRESS;
+			return CreditCardTypes.AmericanExpress;
 		}
 		if(null != nextHandler)
 			return nextHandler.handleRequest(creditCardNumber);

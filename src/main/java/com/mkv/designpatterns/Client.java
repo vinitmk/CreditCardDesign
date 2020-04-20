@@ -11,10 +11,6 @@ import com.mkv.designpatterns.factory.MasterCardFactory;
 import com.mkv.designpatterns.factory.VisaCardFactory;
 import com.mkv.designpatterns.model.CreditCardTypes;
 
-/**
- * Hello world!
- *
- */
 public class Client{
 
 	public static void main(String[] args){
@@ -31,13 +27,13 @@ public class Client{
 
 		if(cardType != null) {
 			switch(cardType){
-				case AMERICANEXPRESS: new AmericanExpressCardFactory();
+			case AmericanExpress: new AmericanExpressCardFactory();
 					break;
-				case DISCOVER: new DiscoverCardFactory();
+			case Discover: new DiscoverCardFactory();
 					break;
-				case MASTERCARD: new MasterCardFactory();
+			case MasterCard: new MasterCardFactory();
 					break;
-				case VISA: new VisaCardFactory();
+			case Visa: new VisaCardFactory();
 					break;
 				default:
 			}

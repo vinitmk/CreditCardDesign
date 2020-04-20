@@ -8,7 +8,7 @@ public class DiscoverCardHandler extends CreditCardHandler {
 		System.out.println("Inside Discover Card Handler");
 		if(isCardValid(creditCardNumber)){
 			System.out.println("Valid Discover Card");
-			return CreditCardTypes.DISCOVER;
+			return CreditCardTypes.Discover;
 		}
 		if(null != nextHandler)
 			return nextHandler.handleRequest(creditCardNumber);
