@@ -1,43 +1,89 @@
 package com.mkv.designpatterns;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.mkv.designpatterns.chainofresponsibility.AmericanExpressCardHandler;
 import com.mkv.designpatterns.chainofresponsibility.DiscoverCardHandler;
 import com.mkv.designpatterns.chainofresponsibility.MasterCardHandler;
 import com.mkv.designpatterns.chainofresponsibility.VisaCardHandler;
 import com.mkv.designpatterns.chainofresponsibility.CreditCardHandler;
 import com.mkv.designpatterns.factory.AmericanExpressCardFactory;
+import com.mkv.designpatterns.factory.CardFactory;
 import com.mkv.designpatterns.factory.DiscoverCardFactory;
+import com.mkv.designpatterns.factory.InvalidCardFactory;
 import com.mkv.designpatterns.factory.MasterCardFactory;
 import com.mkv.designpatterns.factory.VisaCardFactory;
+import com.mkv.designpatterns.model.CreditCard;
 import com.mkv.designpatterns.model.CreditCardTypes;
+import com.mkv.designpatterns.model.FileInputObject;
+import com.mkv.designpatterns.strategy.FileContext;
+import com.mkv.designpatterns.strategy.FileStrategy;
 
 public class Client{
 
 	public static void main(String[] args){
-		CreditCardHandler amexCardHandler = new AmericanExpressCardHandler();
-		CreditCardHandler discoverCardHandler = new DiscoverCardHandler();
-		CreditCardHandler masterCardHandler = new MasterCardHandler();
-		CreditCardHandler visaCardHandler = new VisaCardHandler();
 
-		amexCardHandler.setNextHandler(discoverCardHandler);
-		discoverCardHandler.setNextHandler(masterCardHandler);
-		masterCardHandler.setNextHandler(visaCardHandler);
+		String inputFile;
+		CardFactory factory;
+		CreditCard creditCard;
+		FileContext fileContext;
+		List<FileInputObject> fileObjectList;
+		List<CreditCard> creditCardsList;
 
-		CreditCardTypes cardType = amexCardHandler.handleRequest("test");
+		if(args.length == 0)
+			System.out.print("No Valid Input File");
+		else {
+			inputFile = args[0];
 
-		if(cardType != null) {
-			switch(cardType){
-			case AmericanExpress: new AmericanExpressCardFactory();
-					break;
-			case Discover: new DiscoverCardFactory();
-					break;
-			case MasterCard: new MasterCardFactory();
-					break;
-			case Visa: new VisaCardFactory();
-					break;
-				default:
+			// 1. Choose File Handling strategy
+			fileContext = new FileContext();
+			fileContext.chooseFileStrategy(inputFile);
+			FileStrategy fileStrategy = fileContext.getStrategy();
+
+			// 2. Read Input File
+			fileObjectList = fileStrategy.readFromFile(inputFile);
+
+			// 3. Initialize Card Hanlers and Set up Chain
+			CreditCardHandler amexCardHandler = new AmericanExpressCardHandler();
+			CreditCardHandler discoverCardHandler = new DiscoverCardHandler();
+			CreditCardHandler masterCardHandler = new MasterCardHandler();
+			CreditCardHandler visaCardHandler = new VisaCardHandler();
+			amexCardHandler.setNextHandler(discoverCardHandler);
+			discoverCardHandler.setNextHandler(masterCardHandler);
+			masterCardHandler.setNextHandler(visaCardHandler);
+
+			// 3. Check Card Number Validity and Handler
+			creditCardsList = new ArrayList<>();
+			CreditCardTypes cardType ;
+			factory = new InvalidCardFactory();
+			for (FileInputObject fileObject: fileObjectList) {
+				cardType = amexCardHandler.handleRequest(fileObject.getCardNumber());
+				if(cardType != null) {
+					switch(cardType){
+					case AmericanExpress: factory = new AmericanExpressCardFactory();
+						break;
+					case Discover: factory = new DiscoverCardFactory();
+						break;
+					case MasterCard: factory = new MasterCardFactory();
+						break;
+					case Visa: factory = new VisaCardFactory();
+					}
+				}
+				creditCard = factory.createCard(fileObject.getCardNumber(),
+						fileObject.getExpirationDate(),
+						fileObject.getNameOfCardHolder());
+				creditCardsList.add(creditCard);
 			}
+			fileStrategy.writeToFile(creditCardsList);
 		}
+
+
+
+
+
+
 
 	}
 
