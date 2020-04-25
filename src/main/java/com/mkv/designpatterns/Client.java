@@ -45,7 +45,7 @@ public class Client{
 			// 2. Read Input File
 			fileObjectList = fileStrategy.readFromFile(inputFile);
 
-			// 3. Initialize Card Hanlers and Set up Chain
+			// 3. Initialize Card Handlers and Set up Chain
 			CreditCardHandler amexCardHandler = new AmericanExpressCardHandler();
 			CreditCardHandler discoverCardHandler = new DiscoverCardHandler();
 			CreditCardHandler masterCardHandler = new MasterCardHandler();
@@ -59,6 +59,7 @@ public class Client{
 			CreditCardTypes cardType ;
 			factory = new InvalidCardFactory();
 			for (FileInputObject fileObject: fileObjectList) {
+				// 4. Identify Card Type
 				cardType = amexCardHandler.handleRequest(fileObject.getCardNumber());
 				if(cardType != null) {
 					switch(cardType){
@@ -71,11 +72,13 @@ public class Client{
 					case Visa: factory = new VisaCardFactory();
 					}
 				}
+				// 5. Create Appropriate Credit Card Object
 				creditCard = factory.createCard(fileObject.getCardNumber(),
 						fileObject.getExpirationDate(),
 						fileObject.getNameOfCardHolder());
 				creditCardsList.add(creditCard);
 			}
+			// 6. Write the Credit Card List to File
 			fileStrategy.writeToFile(creditCardsList);
 		}
 
