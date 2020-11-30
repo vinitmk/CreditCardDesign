@@ -12,7 +12,7 @@ public class FileContext {
 		String fileExt = FilenameUtils.getExtension(inputFileName);
 
 		switch(fileExt){
-		case "csv": strategy = new CVSFileStrategy();
+		case "csv": strategy = new CSVFileStrategy();
 					break;
 		case "json": strategy = new JSONFileStrategy();
 					break;
