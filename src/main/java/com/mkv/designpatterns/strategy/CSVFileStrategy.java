@@ -36,8 +36,8 @@ public class CSVFileStrategy implements FileStrategy {
 //				Utility.creditCardToFileObjectMapper(creditCardList);
 	}
 
-	public static void main(String[] args) {
-		CSVFileStrategy file = new CSVFileStrategy();
-		System.out.println(file.readFromFile("test.csv"));
-	}
+//	public static void main(String[] args) {
+//		CSVFileStrategy file = new CSVFileStrategy();
+//		System.out.println(file.readFromFile("test.csv"));
+//	}
 }

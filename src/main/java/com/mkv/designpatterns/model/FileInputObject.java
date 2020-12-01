@@ -19,4 +19,13 @@ public class FileInputObject {
 		this.expirationDate = expirationDate;
 		this.nameOfCardHolder = nameOfCardHolder;
 	}
+
+	@Override
+	public String toString() {
+		return "FileInputObject{" +
+				"cardNumber='" + cardNumber + '\'' +
+				", expirationDate=" + expirationDate +
+				", nameOfCardHolder='" + nameOfCardHolder + '\'' +
+				'}';
+	}
 }

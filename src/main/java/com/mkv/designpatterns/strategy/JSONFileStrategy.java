@@ -49,15 +49,15 @@ public class JSONFileStrategy implements FileStrategy {
 
 	}
 
-	public static void main(String[] args){
-
-		String file = "/Users/vkallampad/Downloads/Sample.json";
-
-		List<FileInputObject> fileList = new JSONFileStrategy().readFromFile(file);
-		for (FileInputObject fileDetails: fileList) {
-			System.out.println(fileDetails.getCardNumber());
-			System.out.println(fileDetails.getExpirationDate());
-			System.out.println(fileDetails.getNameOfCardHolder());
-		}
-	}
+//	public static void main(String[] args){
+//
+//		String file = "/Users/vkallampad/Downloads/Sample.json";
+//
+//		List<FileInputObject> fileList = new JSONFileStrategy().readFromFile(file);
+//		for (FileInputObject fileDetails: fileList) {
+//			System.out.println(fileDetails.getCardNumber());
+//			System.out.println(fileDetails.getExpirationDate());
+//			System.out.println(fileDetails.getNameOfCardHolder());
+//		}
+//	}
 }
