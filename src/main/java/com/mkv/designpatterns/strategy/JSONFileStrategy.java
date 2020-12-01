@@ -21,7 +21,6 @@ public class JSONFileStrategy implements FileStrategy {
 	@Override
 	public List<FileInputObject> readFromFile(String fileName) {
 		List<FileInputObject> inputRows = new ArrayList<>();
-		FileInputObject inputObject = null;
 		JSONParser jsonParser = new JSONParser();
 		try(FileReader fileReader = new FileReader(fileName)){
 
@@ -29,14 +28,10 @@ public class JSONFileStrategy implements FileStrategy {
 
 			JSONArray ccList = (JSONArray) obj;
 			for(Object cc: ccList){
-				inputRows.add(parseCreditCardObject( (JSONObject) cc ));
+				inputRows.add(Utility.parseCreditCardObject( (JSONObject) cc ));
 			}
-
-		} catch (FileNotFoundException | ParseException e){
-			System.out.print(e.getMessage());
-			e.printStackTrace();
 		}
-		catch (IOException e) {
+		catch (ParseException | IOException e){
 			System.out.print(e.getMessage());
 			e.printStackTrace();
 		}
@@ -46,14 +41,7 @@ public class JSONFileStrategy implements FileStrategy {
 		return inputRows;
 	}
 
-	private FileInputObject parseCreditCardObject(JSONObject creditCard) throws java.text.ParseException {
-		FileInputObject inputObject = new FileInputObject();
 
-		inputObject.setNameOfCardHolder((String) creditCard.get("NameOfCardholder"));
-		inputObject.setCardNumber(Long.toString((Long) creditCard.get("CardNumber")));
-		inputObject.setExpirationDate(new SimpleDateFormat("mm/dd/yyyy").parse((String)creditCard.get("ExpirationDate")));
-		return inputObject;
-	}
 
 	@Override
 	public void writeToFile(List<CreditCard> creditCardList) {
