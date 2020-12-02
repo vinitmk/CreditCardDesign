@@ -11,7 +11,7 @@ public class FileContext {
 	public void chooseFileStrategy(String inputFileName){
 		String fileExt = FilenameUtils.getExtension(inputFileName);
 
-		switch(fileExt){
+		switch(fileExt.toLowerCase()){
 		case "csv": strategy = new CSVFileStrategy();
 					break;
 		case "json": strategy = new JSONFileStrategy();
