@@ -6,7 +6,12 @@ public class DiscoverCC extends CreditCard {
 
     public DiscoverCC(String cardNumber, Date expirationDate, String creditCardHolderName){
         super(cardNumber, creditCardHolderName, expirationDate, CreditCardTypes.Discover);
-        System.out.println("Discover Credit Card Object Created");
+        //System.out.println("Discover Credit Card Object Created");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
 }

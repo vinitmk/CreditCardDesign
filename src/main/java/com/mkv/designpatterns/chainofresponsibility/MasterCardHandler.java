@@ -5,9 +5,9 @@ import com.mkv.designpatterns.model.CreditCardTypes;
 public class MasterCardHandler extends CreditCardHandler {
 	@Override
 	public CreditCardTypes handleRequest(String creditCardNumber) {
-		System.out.println("Inside Master Card Handler");
+		//System.out.println("Inside Master Card Handler");
 		if(isCardValid(creditCardNumber)) {
-			System.out.println("Valid Mastercard Card");
+			//System.out.println("Valid Mastercard Card");
 			return CreditCardTypes.MasterCard;
 		}
 		if(null != nextHandler)

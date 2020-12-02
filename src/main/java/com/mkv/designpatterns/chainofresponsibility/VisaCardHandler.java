@@ -6,9 +6,9 @@ public class VisaCardHandler extends CreditCardHandler {
 
 	@Override
 	public CreditCardTypes handleRequest(String creditCardNumber) {
-		System.out.println("Inside Visa Card Handler");
+	//	System.out.println("Inside Visa Card Handler");
 		if(isCardValid(creditCardNumber)) {
-			System.out.println("Valid Visa Card");
+		//	System.out.println("Valid Visa Card");
 			return CreditCardTypes.Visa;
 		}
 		if(null != nextHandler)

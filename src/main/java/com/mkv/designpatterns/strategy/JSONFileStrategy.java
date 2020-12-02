@@ -45,7 +45,10 @@ public class JSONFileStrategy implements FileStrategy {
 
 	@Override
 	public void writeToFile(List<CreditCard> creditCardList) {
-		List<FileOutputObject> fileOutputObjectList = Utility.creditCardToFileObjectMapper(creditCardList);
+		//List<FileOutputObject> fileOutputObjectList = Utility.creditCardToFileObjectMapper(creditCardList);
+		//System.out.println("inside json write to file");
+		for(CreditCard c: creditCardList)
+			System.out.println(c);
 
 	}
 

@@ -6,4 +6,9 @@ public class InvalidCC extends CreditCard {
 	public InvalidCC(String cardNumber, String creditCardHolderName, Date expirationDate) {
 		super(cardNumber, creditCardHolderName, expirationDate, CreditCardTypes.Invalid);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }

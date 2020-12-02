@@ -5,9 +5,9 @@ import com.mkv.designpatterns.model.CreditCardTypes;
 public class AmericanExpressCardHandler extends CreditCardHandler {
 	@Override
 	public CreditCardTypes handleRequest(String creditCardNumber) {
-		System.out.println("Inside American Express Card Handler");
+		//System.out.println("Inside American Express Card Handler");
 		if(isCardValid(creditCardNumber)) {
-			System.out.println("Valid American Express Card");
+			//System.out.println("Valid American Express Card");
 			return CreditCardTypes.AmericanExpress;
 		}
 		if(null != nextHandler)

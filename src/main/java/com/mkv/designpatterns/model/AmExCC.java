@@ -6,6 +6,11 @@ public class AmExCC extends CreditCard {
 
     public AmExCC(String cardNumber, Date expirationDate, String creditCardHolderName){
         super(cardNumber, creditCardHolderName, expirationDate, CreditCardTypes.AmericanExpress);
-        System.out.println("American Express Credit Card Object Created");
+       // System.out.println("American Express Credit Card Object Created");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

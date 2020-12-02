@@ -78,7 +78,8 @@ public class Client {
 						case Visa:
 							factory = new VisaCardFactory();
 						}
-					}
+					} else
+						factory = new InvalidCardFactory();
 					// 5. Create Appropriate Credit Card Object
 					creditCard =
 							factory.createCard(

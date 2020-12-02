@@ -34,6 +34,9 @@ public class CSVFileStrategy implements FileStrategy {
 	public void writeToFile(List<CreditCard> creditCardList) {
 //		List<FileOutputObject> fileOutputObjectList =
 //				Utility.creditCardToFileObjectMapper(creditCardList);
+		//System.out.println("inside csv write to file");
+		for(CreditCard c: creditCardList)
+			System.out.println(c);
 	}
 
 //	public static void main(String[] args) {
